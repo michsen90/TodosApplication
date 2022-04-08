@@ -1,7 +1,5 @@
 package todo.app.logic;
 
-import org.springframework.stereotype.Service;
-import todo.app.TaskConfigurationProperties;
 import todo.app.model.TaskGroup;
 import todo.app.model.TaskGroupRepository;
 import todo.app.model.TaskRepository;
@@ -11,7 +9,7 @@ import todo.app.model.projection.GroupWriteModel;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+
 public class TaskGroupService {
     private TaskGroupRepository repository;
     private TaskRepository taskRepository;
