@@ -1,5 +1,6 @@
 package todo.app.logic;
 
+import todo.app.model.Project;
 import todo.app.model.TaskGroup;
 import todo.app.model.TaskGroupRepository;
 import todo.app.model.TaskRepository;
@@ -22,7 +23,11 @@ public class TaskGroupService {
     }
 
     public GroupReadModel createGroup(GroupWriteModel source){
-        TaskGroup result = repository.save(source.toGroup());
+        return createGroup(source, null);
+    }
+
+    GroupReadModel createGroup(GroupWriteModel source, Project project){
+        TaskGroup result = repository.save(source.toGroup(project));
         return new GroupReadModel(result);
     }
 
