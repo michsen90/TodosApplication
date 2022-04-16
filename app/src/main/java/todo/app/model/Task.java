@@ -1,5 +1,7 @@
 package todo.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -18,17 +20,22 @@ public class Task {
     private Audit audit = new Audit();
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "task_group_id")
     private TaskGroup group;
 
-
-    Task() {
-    }
-
-    public Task(String description, LocalDateTime deadline){
+    public Task(String description, LocalDateTime deadline) {
         this.description = description;
         this.deadline = deadline;
     }
+
+    public Task(String description, LocalDateTime deadline, TaskGroup group) {
+        this.description = description;
+        this.deadline = deadline;
+        this.group = group;
+    }
+
+    public Task() {}
 
     public int getId() {
         return id;
@@ -62,7 +69,7 @@ public class Task {
         this.deadline = deadline;
     }
 
-    public void updateFrom(Task source){
+    public void updateFrom(Task source) {
         description = source.description;
         done = source.done;
         deadline = source.deadline;

@@ -3,11 +3,11 @@ package todo.app.adapter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 import todo.app.model.Task;
 import todo.app.model.TaskRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -18,5 +18,10 @@ interface SqlTaskRepository extends JpaRepository<Task, Integer>, TaskRepository
 
     @Override
     boolean existsByDoneIsFalseAndGroup_Id(Integer groupId);
+
+    @Override
+    List<Task> findAllByGroup_Id(Integer groupId);
+
+
 
 }

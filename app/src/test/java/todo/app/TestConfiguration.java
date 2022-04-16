@@ -13,6 +13,7 @@ import todo.app.model.TaskRepository;
 
 import javax.sql.DataSource;
 import java.lang.reflect.Field;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Configuration
@@ -78,6 +79,13 @@ public class TestConfiguration {
             public List<Task> findByDone(boolean done) {
                 return null;
             }
+
+            @Override
+            public List<Task> findAllByGroup_Id(Integer groupId) {
+                return List.of();
+            }
+
+
         };
     }
 }
